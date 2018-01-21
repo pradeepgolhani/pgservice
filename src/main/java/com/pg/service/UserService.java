@@ -12,20 +12,21 @@ public class UserService implements IUserService{
 	
 	
 	public User validateUser(Login login) {
-		
-		String asB64;
+
 		User user = null;
-		try {
-			asB64 = Base64.getEncoder().encodeToString(Constants.PASS.getBytes("utf-8"));
-			if(login.getUsername().equals("pg") && new String(asB64).equals(login.getPassword())){
-				user = new User();
-				user.setUsername("pg");
-				user.setFirstname("Pradeep");
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		byte[] asBytes = Base64.getDecoder().decode(Constants.PASS);
+		if (login.getUsername().equals("pg")
+				&& new String(asBytes).equals(login.getPassword())) {
+			user = new User();
+			user.setUsername("pg");
+			user.setFirstname("Pradeep");
 		}
+
 		return user;
+	}
+	public static void main(String[] args) throws UnsupportedEncodingException {
+		byte[] asBytes = Base64.getDecoder().decode(Constants.PASS);
+		System.out.println(new String(asBytes));
 	}
 	
 }
