@@ -75,11 +75,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
         </dependency>
-        <dependency>
-		    <groupId>commons-codec</groupId>
-		    <artifactId>commons-codec</artifactId>
-		    <version>1.11</version>
-		</dependency>
   </dependencies>
   <build>
     <finalName>pgservice1</finalName>
