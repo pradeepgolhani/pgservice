@@ -50,7 +50,7 @@ public class PNController {
 			model.addAttribute("message", response.substring(0,response.indexOf('[')));
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("message", "Error in Push Notification");
+			model.addAttribute("message", "Error in Push Notification"+e.getMessage() +" |" +e.toString());
 		}
        
         return "pn";
