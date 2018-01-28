@@ -1,5 +1,7 @@
 package com.pg.util;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -12,13 +14,15 @@ public class AppUtil {
 	private static final String SCOPES[] = { "https://www.googleapis.com/auth/firebase.messaging" };// ,
 																									// "https://www.googleapis.com/auth/cloud-platform"
 
-	public static String getAccessToken() throws IOException {
+	public String getAccessToken() throws IOException {
 		GoogleCredential googleCredential = null;
 		try {
-			InputStream inputStream = AppUtil.class
-					.getResourceAsStream("abc.json");
-			String result = IOUtils.toString(inputStream, "UTF-8");
-			System.out.println(result);
+			InputStream inputStream = null; //AppUtil.class.getResourceAsStream("abc.json");
+			
+			if(inputStream == null){
+				inputStream = this.getClass().getClassLoader()
+		                .getResourceAsStream("abc.json");
+			}
 			googleCredential = GoogleCredential.fromStream(inputStream)
 					.createScoped(Arrays.asList(SCOPES));
 			googleCredential.refreshToken();

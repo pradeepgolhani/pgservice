@@ -22,6 +22,7 @@ public class App {
 			throws Exception {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpResponse response = null;
+		AppUtil appUtil = new AppUtil();
 		try {
 			System.out.println(URL);
 			HttpPost request = new HttpPost(URL);
@@ -29,7 +30,7 @@ public class App {
 			StringEntity params = new StringEntity(getJsonPayLoad(data, id));
 			request.addHeader("Content-Type", "application/json; UTF-8");
 			request.addHeader("Authorization",
-					"Bearer " + AppUtil.getAccessToken());
+					"Bearer " + appUtil.getAccessToken());
 			request.setEntity(params);
 			response = httpClient.execute(request);
 			System.out.println(response.toString());
