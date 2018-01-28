@@ -12,5 +12,5 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<bean id="userService" class="com.pg.service.UserService" />
+    <bean id="userService" class="com.pg.service.UserService" />
 </beans>
